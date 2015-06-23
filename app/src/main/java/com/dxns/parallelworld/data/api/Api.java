@@ -46,6 +46,7 @@ public class Api {
                     request.addQueryParam("v", ParallelwordApplacation.getPackageInfo().versionName);
                     request.addQueryParam("device", "android");
                     request.addQueryParam("userId", userId);
+
                 }
 
             }
