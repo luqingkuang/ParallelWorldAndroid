@@ -11,6 +11,7 @@ package com.dxns.parallelworld.core;
  */
 public class AppConfig {
     public static final String DATABASENAME = "parallelworld.db";
+    public static final String BASEURL = "http://parallelworld.kingty.club";
 
 
 

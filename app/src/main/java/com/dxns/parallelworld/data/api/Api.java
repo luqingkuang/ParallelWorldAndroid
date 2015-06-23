@@ -2,6 +2,7 @@ package com.dxns.parallelworld.data.api;
 
 import android.widget.Toast;
 
+import com.dxns.parallelworld.core.AppConfig;
 import com.dxns.parallelworld.core.Database;
 import com.dxns.parallelworld.core.ParallelwordApplacation;
 import com.dxns.parallelworld.data.exception.MyErrorHandler;
@@ -33,6 +34,7 @@ public class Api {
         //请求拦截器，便于在每个请求上面添加公共的参数
 
         RequestInterceptor requestInterceptor = new RequestInterceptor() {
+
             @Override
             public void intercept(RequestFacade request) {
                 String userId = Database.getSharedPreferences().getString("userId","");
@@ -41,9 +43,9 @@ public class Api {
                     ToastUtils.show("请登录", Toast.LENGTH_SHORT);
                     //此处跳转登录界面
                 }else {
-                    request.addHeader("v", ParallelwordApplacation.getPackageInfo().versionName);
-                    request.addHeader("device", "android");
-                    request.addHeader("userId", userId);
+                    request.addQueryParam("v", ParallelwordApplacation.getPackageInfo().versionName);
+                    request.addQueryParam("device", "android");
+                    request.addQueryParam("userId", userId);
                 }
 
             }
@@ -55,7 +57,7 @@ public class Api {
                 .create();
 
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://parallelworld.kingty.club")
+                .setEndpoint(AppConfig.BASEURL)
                 .setRequestInterceptor(requestInterceptor)
                 .setConverter(new GsonConverter(gson))
                 .setErrorHandler(new MyErrorHandler())
@@ -70,7 +72,6 @@ public class Api {
 
 
         UserServices api = getAdapter().create(UserServices.class);
-
         return api;
     }
 
