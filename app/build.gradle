@@ -52,5 +52,6 @@ dependencies {
     compile CommomDependencies.androidAnnotations
     compile CommomDependencies.sprinkles
     compile CommomDependencies.retrofit
+    compile CommomDependencies.okHttp
 
 }

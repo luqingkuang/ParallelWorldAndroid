@@ -9,6 +9,7 @@ import com.dxns.parallelworld.core.ParallelwordApplacation;
 import com.dxns.parallelworld.core.SubscriberWithWeakHost;
 import com.dxns.parallelworld.data.api.Api;
 import com.dxns.parallelworld.data.model.StatuData;
+import com.dxns.parallelworld.data.service.UserServices;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -32,7 +33,7 @@ public class MainActivity extends Activity {
 
     private void fechData() {
 
-        Api.getUserApi().Login()
+        Api.createApi(this, UserServices.class).Login()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new sus(this));
 
