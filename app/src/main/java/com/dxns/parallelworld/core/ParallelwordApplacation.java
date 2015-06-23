@@ -27,10 +27,7 @@ public class ParallelwordApplacation extends android.support.multidex.MultiDexAp
         return packageInfo;
     }
 
-    /**
-     * 标记是否输出debug信息
-     */
-    public static boolean DEBUG = false;
+
 
     @Override
     public void onCreate() {
