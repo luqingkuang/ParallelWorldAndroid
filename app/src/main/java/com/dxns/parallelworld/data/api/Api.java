@@ -1,22 +1,15 @@
 package com.dxns.parallelworld.data.api;
 
-import android.widget.Toast;
+import android.content.Context;
 
 import com.dxns.parallelworld.core.AppConfig;
-import com.dxns.parallelworld.core.Database;
-import com.dxns.parallelworld.core.ParallelwordApplacation;
 import com.dxns.parallelworld.data.exception.MyErrorHandler;
-import com.dxns.parallelworld.data.service.UserServices;
-import com.dxns.parallelworld.util.ToastUtils;
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.internal.bind.DateTypeAdapter;
+import com.dxns.parallelworld.data.utils.GosnUtils;
+import com.dxns.parallelworld.data.utils.MyRequestInterceptor;
+import com.dxns.parallelworld.data.utils.OkHttpUtils;
 
-import java.util.Date;
-
-import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
+import retrofit.client.OkClient;
 import retrofit.converter.GsonConverter;
 
 /**
@@ -30,50 +23,16 @@ import retrofit.converter.GsonConverter;
 public class Api {
 
 
-    private static  RestAdapter getAdapter(){
-        //请求拦截器，便于在每个请求上面添加公共的参数
-
-        RequestInterceptor requestInterceptor = new RequestInterceptor() {
-
-            @Override
-            public void intercept(RequestFacade request) {
-                String userId = Database.getSharedPreferences().getString("userId","");
-
-                if(userId.equals("")){
-                    ToastUtils.show("请登录", Toast.LENGTH_SHORT);
-                    //此处跳转登录界面
-                }else {
-                    request.addQueryParam("v", ParallelwordApplacation.getPackageInfo().versionName);
-                    request.addQueryParam("device", "android");
-                    request.addQueryParam("userId", userId);
-
-                }
-
-            }
-        };
-        //设置把所有的json都转换成小写
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .registerTypeAdapter(Date.class, new DateTypeAdapter())
-                .create();
+    public  static<T> T createApi(Context context,Class<T> clazz){
 
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(AppConfig.BASEURL)
-                .setRequestInterceptor(requestInterceptor)
-                .setConverter(new GsonConverter(gson))
+                .setRequestInterceptor(MyRequestInterceptor.get())
+                .setConverter(new GsonConverter(GosnUtils.newInstance()))
+                .setClient(new OkClient(OkHttpUtils.getInstance(context)))
                 .setErrorHandler(new MyErrorHandler())
-                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setLogLevel(AppConfig.DEBUG ? RestAdapter.LogLevel.FULL : RestAdapter.LogLevel.NONE)
                 .build();
-
-
-        return restAdapter;
+        return restAdapter.create(clazz);
     }
-
-    public static UserServices getUserApi() {
-
-
-        UserServices api = getAdapter().create(UserServices.class);
-        return api;
-    }
-
 }
