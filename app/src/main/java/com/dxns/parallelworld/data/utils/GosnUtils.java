@@ -27,7 +27,7 @@ public class GosnUtils {
     public static Gson newInstance() {
         GsonBuilder builder = new GsonBuilder();
 
-        builder.setFieldNamingStrategy(new AnnotateNaming());
+//        builder.setFieldNamingStrategy(new AnnotateNaming());
 
 
         builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)        //设置把所有的json都转换成小写
