@@ -97,8 +97,6 @@ public class StringUtil {
      * 编码为Unicode，格式 '\u0020'.
      * </p>
      *
-     * @author 宋立君
-     *
      *         <pre>
      *   CharUtils.unicodeEscaped(' ') = "\u0020"
      *   CharUtils.unicodeEscaped('A') = "\u0041"
@@ -988,7 +986,6 @@ public class StringUtil {
      * 如果expr长度为0，直接返回sourceStr。<br/>
      * 如果expr在sourceStr中不存在，直接返回sourceStr。<br/>
      *
-     * @author 宋立君
      * @date 2014年06月24日
      * @param sourceStr
      *            被截取的字符串
@@ -1017,7 +1014,6 @@ public class StringUtil {
      * 如果expr长度为0，直接返回sourceStr。<br/>
      * 如果expr在sourceStr中不存在，直接返回sourceStr。<br/>
      *
-     * @author 宋立君
      * @date 2014年06月24日
      * @param sourceStr
      *            被截取的字符串
@@ -1045,7 +1041,6 @@ public class StringUtil {
      * 如果expr长度为0，直接返回sourceStr。<br/>
      * 如果expr在sourceStr中不存在，直接返回sourceStr。<br/>
      *
-     * @author 宋立君
      * @date 2014年06月24日
      * @param sourceStr
      *            被截取的字符串
@@ -1075,7 +1070,6 @@ public class StringUtil {
      * 如果expr在sourceStr中不存在，直接返回sourceStr。<br/>
      * 如果expr在sourceStr中存在不止一个，以第一个位置为准。
      *
-     * @author 宋立君
      * @date 2014年06月24日
      * @param sourceStr
      *            被截取的字符串
