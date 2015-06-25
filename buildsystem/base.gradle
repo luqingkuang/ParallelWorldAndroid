@@ -62,6 +62,6 @@ ext {
             sprinkles:          "se.emilsjolander:sprinkles:${sprinklesVersion}",
             fresco:             "com.facebook.fresco:fresco:${frescoVersion}",
             appcompat_v7:       "com.android.support:appcompat-v7:${v7Version}",
-            retrofit:           "com.squareup.retrofit:retrofit:${retrofitVersion}"
+            retrofit:           "com.squareup.retrofit:retrofit:${retrofitVersion}",
     ]
 }

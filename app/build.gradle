@@ -37,20 +37,19 @@ android {
 dependencies {
     def CommomDependencies = rootProject.ext.CommomDependencies
     compile fileTree(dir: 'libs', include: ['*.jar'])
-//    compile project(':data')
-//    compile project(':util')
     compile CommomDependencies.androidAnnotations
     compile CommomDependencies.gson
     compile CommomDependencies.rxJava
     compile CommomDependencies.rxAndroid
     compile CommomDependencies.multidex
     compile CommomDependencies.fresco
-//    compile CommomDependencies.retrofit
 
     compile CommomDependencies.appcompat_v7
     compile CommomDependencies.butterKnife
     compile CommomDependencies.androidAnnotations
     compile CommomDependencies.sprinkles
     compile CommomDependencies.okHttp
+    compile (group: 'com.tumblr', name: 'remember', version: '1.0.0', ext: 'aar')
+    compile (group: 'com.tumblr', name: 'bookends', version: '1.0.0', ext: 'aar')
 
 }
