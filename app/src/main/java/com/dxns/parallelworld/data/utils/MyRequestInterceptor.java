@@ -5,6 +5,7 @@ import android.widget.Toast;
 import com.dxns.parallelworld.core.AppConfig;
 import com.dxns.parallelworld.core.Database;
 import com.dxns.parallelworld.core.ParallelwordApplacation;
+import com.dxns.parallelworld.util.MD5Utils;
 import com.dxns.parallelworld.util.ToastUtils;
 
 import retrofit.RequestInterceptor;
@@ -13,7 +14,7 @@ import retrofit.client.Request;
 /**
  * @author kingty
  * @title MyInterceptor
- * @description
+ * @description 拦截URL请求，添加公共参数
  * @modifier
  * @date
  * @since 15/6/23 下午4:47
@@ -31,23 +32,16 @@ public class MyRequestInterceptor {
                     ToastUtils.show("请登录", Toast.LENGTH_SHORT);
                     //此处跳转登录界面
                 }else {
+                    long timestampStr = System.currentTimeMillis();
+                    String SignStr = requestFacade.getBaseUrl()+"&token="+token+"&timestamp="+timestampStr;
+                    String sign = MD5Utils.getMD5StringWithSalt(SignStr,"salt值");//MD5加盐加密，签名串
 
-                    requestFacade.addQueryParam("v", ParallelwordApplacation.getPackageInfo().versionName);
-                    requestFacade.addQueryParam("device", "android");
-                    requestFacade.addQueryParam("userId", userId);
-
+                    requestFacade.addQueryParam("v", ParallelwordApplacation.getPackageInfo().versionName);//版本号
+                    requestFacade.addQueryParam("device", "android");//设备类型
+                    requestFacade.addQueryParam("userId", userId);//用户ID
+                    requestFacade.addQueryParam("sign", sign);//签名串
+                    requestFacade.addQueryParam("timestamp", timestampStr+"");//时间戳
                 }
-
-
-                /**
-                 * 测试拿到注解URL
-                 *
-                 */
-                    String url = requestFacade.getBaseUrl();
-
-                    ToastUtils.show(url, Toast.LENGTH_SHORT);
-                    System.out.print(url);
-
             }
         };
     }
