@@ -27,4 +27,8 @@ public class AppConfig {
     public static int HTTP_READ_TIMEOUT = 20*1000;
 
 
+    public static String USERID = "userId";
+    public static String  TOKEN = "token";
+
+
 }

@@ -1,5 +1,7 @@
 package com.dxns.parallelworld.data.model;
 
+import com.dxns.parallelworld.data.annotation.ParamName;
+
 /**
  * @author kingty
  * @title StatuData
