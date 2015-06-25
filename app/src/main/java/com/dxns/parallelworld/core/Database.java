@@ -9,6 +9,8 @@ import android.database.DatabaseUtils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.tumblr.remember.Remember;
+
 import se.emilsjolander.sprinkles.Sprinkles;
 import se.emilsjolander.sprinkles.typeserializers.SqlType;
 import se.emilsjolander.sprinkles.typeserializers.TypeSerializer;
@@ -92,13 +94,7 @@ public class Database {
     }
 
     public static String getCurrentDatabasePath() {
-        return getSharedPreferences().getString("databasePath", AppConfig.DATABASENAME);
-    }
-
-    public static SharedPreferences getSharedPreferences() {
-        String packageName = ParallelwordApplacation.get().getPackageName();
-        SharedPreferences sharedPreferences = ParallelwordApplacation.get().getSharedPreferences(packageName, Context.MODE_PRIVATE);
-        return sharedPreferences;
+        return Remember.getString("databasePath", AppConfig.DATABASENAME);
     }
 
     public static void resetDb() {

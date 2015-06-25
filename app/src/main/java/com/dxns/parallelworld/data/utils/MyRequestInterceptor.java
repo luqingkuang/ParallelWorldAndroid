@@ -7,6 +7,7 @@ import com.dxns.parallelworld.core.Database;
 import com.dxns.parallelworld.core.ParallelwordApplacation;
 import com.dxns.parallelworld.util.MD5Utils;
 import com.dxns.parallelworld.util.ToastUtils;
+import com.tumblr.remember.Remember;
 
 import retrofit.RequestInterceptor;
 import retrofit.client.Request;
@@ -26,8 +27,8 @@ public class MyRequestInterceptor {
 
             @Override
             public void intercept(RequestFacade requestFacade) {
-                String userId = Database.getSharedPreferences().getString(AppConfig.USERID,"");
-                String token = Database.getSharedPreferences().getString(AppConfig.TOKEN,"");
+                String userId = Remember.getString(AppConfig.USERID, "");
+                String token = Remember.getString(AppConfig.TOKEN,"");
                 if(userId.equals("")||token.equals("")){
                     ToastUtils.show("请登录", Toast.LENGTH_SHORT);
                     //此处跳转登录界面

@@ -1,6 +1,5 @@
 package com.dxns.parallelworld.util;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,8 +10,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 
 
-import com.dxns.parallelworld.core.Database;
 import com.dxns.parallelworld.core.ParallelwordApplacation;
+import com.tumblr.remember.Remember;
 
 import java.lang.reflect.Field;
 
@@ -34,25 +33,24 @@ public class DisplayAdapter {
 
 
     public static int getDensityDpi() {
-        return Database.getSharedPreferences().getInt("densityDpi", 0);
+        return Remember.getInt("densityDpi", 0);
     }
 
     public static int getWidthPixels() {
-        return Database.getSharedPreferences().getInt("widthPixels", 0);
+        return Remember.getInt("widthPixels", 0);
     }
 
     public static int getHeightPixels() {
-        return Database.getSharedPreferences().getInt("heightPixels", 0);
+        return Remember.getInt("heightPixels", 0);
     }
 
+    //程序启动时初始化
     public static void init(Activity context) {
         DisplayMetrics metrics = new DisplayMetrics();
         context.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        Database.getSharedPreferences().edit()
-                .putInt("densityDpi", metrics.densityDpi)
-                .putInt("widthPixels", metrics.widthPixels)
-                .putInt("heightPixels", metrics.heightPixels)
-                .commit();
+        Remember.putInt("densityDpi", metrics.densityDpi);
+        Remember.putInt("widthPixels", metrics.widthPixels);
+        Remember.putInt("heightPixels", metrics.heightPixels);
     }
     //public static String getThumbnailKeyForHome()
 
@@ -258,7 +256,6 @@ public class DisplayAdapter {
      *
      * @param alpha
      */
-    @SuppressLint("NewApi")
     public void changeStatusBarColor(View view, float alpha) {
         view.setAlpha(1 - alpha);
 
