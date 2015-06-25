@@ -4,6 +4,7 @@ import android.os.Looper;
 import android.support.annotation.StringRes;
 import android.widget.Toast;
 
+import com.dxns.parallelworld.core.AppConfig;
 import com.dxns.parallelworld.core.ParallelwordApplacation;
 
 import rx.android.schedulers.AndroidSchedulers;
@@ -32,7 +33,7 @@ public class ToastUtils {
     }
 
     public static void showWhenDebug(final String msg, final int length) {
-        if (ParallelwordApplacation.DEBUG) {
+        if (AppConfig.DEBUG) {
             show(msg, length);
         }
     }

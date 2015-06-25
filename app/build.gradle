@@ -45,13 +45,12 @@ dependencies {
     compile CommomDependencies.rxAndroid
     compile CommomDependencies.multidex
     compile CommomDependencies.fresco
+//    compile CommomDependencies.retrofit
 
     compile CommomDependencies.appcompat_v7
-    compile CommomDependencies.retrofit
     compile CommomDependencies.butterKnife
     compile CommomDependencies.androidAnnotations
     compile CommomDependencies.sprinkles
-    compile CommomDependencies.retrofit
     compile CommomDependencies.okHttp
 
 }
