@@ -35,7 +35,7 @@ public class MyRequestInterceptor {
                 }else {
                     long timestampStr = System.currentTimeMillis();
                     String SignStr = requestFacade.getBaseUrl()+"&token="+token+"&timestamp="+timestampStr;
-                    String sign = MD5Utils.getMD5StringWithSalt(SignStr,"salt值");//MD5加盐加密，签名串
+                    String sign = MD5Utils.generate(SignStr);//MD5加盐加密，签名串
 
                     requestFacade.addQueryParam("v", ParallelwordApplacation.getPackageInfo().versionName);//版本号
                     requestFacade.addQueryParam("device", "android");//设备类型
