@@ -5,12 +5,16 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.PowerManager;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 
 import com.dxns.parallelworld.core.ParallelwordApplacation;
+import com.dxns.parallelworld.view.activity.commom.ActionBarBaseActivity;
 import com.tumblr.remember.Remember;
 
 import java.lang.reflect.Field;
@@ -260,4 +264,19 @@ public class DisplayAdapter {
         view.setAlpha(1 - alpha);
 
     }
+
+    public static void hideStatusbar(ActionBarBaseActivity context) {
+        //状态栏沉浸模式使用
+        //4.4版本及以上可用
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // 状态栏沉浸效果
+            Window window = context.getWindow();
+            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+    }
+
 }

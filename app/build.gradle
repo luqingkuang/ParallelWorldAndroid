@@ -29,6 +29,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+//                    'src/main/res/layouts/voice',
+                    'src/main/res/layouts',
+                    'src/main/res'
+            ]
+
+            androidTest.setRoot('src/test')
+        }
+    }
 }
 
 
@@ -49,6 +61,9 @@ dependencies {
     compile CommomDependencies.androidAnnotations
     compile CommomDependencies.sprinkles
     compile CommomDependencies.okHttp
+    compile CommomDependencies.materialloadingprogressbar
+    compile CommomDependencies.loadingeverywhere
+    compile CommomDependencies.umengAnalytics
     compile (group: 'com.tumblr', name: 'remember', version: '1.0.0', ext: 'aar')
     compile (group: 'com.tumblr', name: 'bookends', version: '1.0.0', ext: 'aar')
 

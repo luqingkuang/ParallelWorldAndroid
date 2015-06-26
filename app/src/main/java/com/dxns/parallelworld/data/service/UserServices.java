@@ -15,6 +15,6 @@ import rx.Observable;
  */
 public interface UserServices {
     //@Field("emial") String email, @Field("password") String password
-    @GET("/user.html")
+    @GET(URL.USER)
     Observable<StatuData> Login();
 }
