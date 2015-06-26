@@ -10,4 +10,11 @@ package com.dxns.parallelworld.view.navigation;
  * @since 15/6/19 下午1:46
  */
 public class Navigator {
+
+    /**
+     * 跳转到登陆
+     */
+    public static void ToLoginActivity(){
+
+    }
 }

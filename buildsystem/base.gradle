@@ -39,6 +39,8 @@ ext {
     frescoVersion = '0.5.0+'
     v7Version = "22.2.0"
     retrofitVersion = "1.9.0"
+    loadingeverywhereVersion = "1.1.1"
+    materialloadingprogressbarVersion = "0.5.4-RELEASE"
     CommomDependencies = [
             daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
             dagger:             "com.google.dagger:dagger:${daggerVersion}",
@@ -63,5 +65,8 @@ ext {
             fresco:             "com.facebook.fresco:fresco:${frescoVersion}",
             appcompat_v7:       "com.android.support:appcompat-v7:${v7Version}",
             retrofit:           "com.squareup.retrofit:retrofit:${retrofitVersion}",
+            materialloadingprogressbar: "com.lsjwzh:materialloadingprogressbar:${materialloadingprogressbarVersion}",
+            loadingeverywhere:  "com.lsjwzh:loadingeverywhere:${loadingeverywhereVersion}",
+            umengAnalytics:     "com.umeng.analytics:analytics:latest.integration"
     ]
 }

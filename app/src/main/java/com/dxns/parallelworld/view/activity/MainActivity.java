@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.dxns.parallelworld.R;
-import com.dxns.parallelworld.core.ParallelwordApplacation;
-import com.dxns.parallelworld.core.SubscriberWithWeakHost;
+import com.dxns.parallelworld.core.rx.SubscriberWithWeakHost;
 import com.dxns.parallelworld.data.api.Api;
 import com.dxns.parallelworld.data.model.StatuData;
 import com.dxns.parallelworld.data.service.UserServices;
+import com.dxns.parallelworld.util.MD5Utils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
         public void doOnNext(StatuData statuData) {
 
             if (statuData != null) {
-                getHost().text.setText(statuData.message+":"+ ParallelwordApplacation.getPackageInfo().versionName);
+                getHost().text.setText(statuData.message+":"+ MD5Utils.verify("sss", "492d8954e89968f703292937511991c76f25678e96504774"));
 
             }
         }
